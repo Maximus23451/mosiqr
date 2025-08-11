@@ -1,61 +1,615 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mosoni Márk</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mosoni Márk - 13/C</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c6e49;
+            --primary-dark: #1a4d32;
+            --primary-light: #4c956c;
+            --secondary: #f9c74f;
+            --accent: #f8961e;
+            --light: #f0faf5;
+            --dark: #333;
+            --gray: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
+            background: linear-gradient(135deg, #eef7f4 0%, #ddeee9 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234c956c' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 100%);
+            z-index: -1;
+        }
+
+        .header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            margin: 15px 0 25px;
+            font-size: 20px;
+            font-style: italic;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .music-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            color: var(--primary);
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .music-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .music-button:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .music-button:hover::before {
+            opacity: 1;
+        }
+
+        .music-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Content Section */
+        .content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Video Section */
+        .video-section {
+            flex: 1;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .video-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-source {
+            margin: 15px;
+            font-size: 15px;
+            color: var(--gray);
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .video-source a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .video-source a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .video-source a:hover {
+            color: var(--primary-dark);
+        }
+
+        .video-source a:hover::after {
+            width: 100%;
+        }
+
+        /* Follow Section */
+        .follow-section {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .follow-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .follow-section h3 {
+            margin: 0 0 25px;
+            color: var(--dark);
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .follow-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .social-media {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 15px;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .social-media:hover {
+            background: #e5f4ee;
+            transform: translateX(8px);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .social-text {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .platform-name {
+            display: block;
+            font-size: 22px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .follow-text {
+            display: block;
+            font-size: 16px;
+            color: var(--gray);
+            margin-top: 8px;
+        }
+
+        .arrow-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .arrow-link:hover {
+            background: var(--primary-dark);
+            transform: rotate(-15deg) scale(1.1);
+        }
+
+        .arrow-link i {
+            font-size: 22px;
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            font-size: 24px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h2 {
+                font-size: 30px;
+            }
+            
+            .header p {
+                font-size: 18px;
+            }
+            
+            .music-button {
+                padding: 14px 28px;
+                font-size: 17px;
+            }
+            
+            .follow-section {
+                padding: 25px 20px;
+            }
+            
+            .follow-section h3 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .header h2 {
+                font-size: 26px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+            
+            .social-media {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+            
+            .social-text {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            .arrow-link {
+                width: 100%;
+                border-radius: 8px;
+                padding: 12px;
+                margin-top: 10px;
+            }
+            
+            .footer {
+                padding: 20px 15px;
+            }
+            
+            .footer-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header h2 {
+                font-size: 22px;
+            }
+            
+            .header p {
+                font-size: 15px;
+            }
+            
+            .music-button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+            
+            .footer-logo {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <!-- Header Section -->
-        <div class="header">
+        <div class="header float">
             <h2>13/C</h2>
             <p>“Még mindig fáj Trianon”</p>
-            <!-- Changed the button to a clickable link -->
             <a href="https://www.youtube.com/watch?v=bGaAgP3eRQM" 
-               class="music-button" 
+               class="music-button pulse" 
                target="_blank" 
                rel="noopener noreferrer">
-                Ballagós zene
+                <i class="fas fa-music"></i> Ballagós zene
             </a>
         </div>
 
-        <!-- Video Section -->
-        <div class="video-section">
-            <iframe 
-                src="https://www.youtube.com/embed/Qmwa0r9D3NE" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-            ></iframe>
-            <p class="video-source">Megtekinthető itt: <a href="https://www.youtube.com/watch?v=Qmwa0r9D3NE">YouTube</a></p>
+        <!-- Content Section -->
+        <div class="content">
+            <!-- Video Section -->
+            <div class="video-section">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Qmwa0r9D3NE" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <p class="video-source">Megtekinthető itt: <a href="https://www.youtube.com/watch?v=Qmwa0r9D3NE">YouTube</a></p>
+            </div>
+
+            <!-- Follow Section -->
+            <div class="follow-section">
+                <h3>Kövess engem</h3>
+                <div class="social-media" onclick="window.open('https://www.instagram.com/amosoni_', '_blank')">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="social-text">
+                        <span class="platform-name">Instagram</span>
+                        <span class="follow-text">Ha már itt vagy, követhetnél!</span>
+                    </div>
+                    <div class="arrow-link">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Follow Section -->
-        <div class="follow-section">
-            <h3>Kövess engem</h3>
-            <div class="social-media">
-                <div class="social-icon">
-                    <img 
-                        src="https://img.icons8.com/color/48/000000/instagram-new.png" 
-                        alt="Instagram Icon" 
-                        class="instagram-icon"
-                    >
-                </div>
-                <div class="social-text">
-                    <span class="platform-name">Instagram</span>
-                    <span class="follow-text">Ha már itt vagy, követhetnél!</span>
-                </div>
-                <a href="https://www.instagram.com/amosoni_" class="arrow-link">
-                    <img 
-                        src="https://img.icons8.com/ios-filled/50/000000/long-arrow-right.png" 
-                        alt="Arrow Icon" 
-                        class="arrow-icon"
-                    >
-                </a>
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">MOSONI MÁRK</div>
+            <p>13/C osztály - Ballagás 2025</p>
+            <p>„Az emlékek örökké velünk maradnak”</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/amosoni_" target="_blank"><i class="fab fa-instagram"></i></a>
+               <!-- <a href="" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:example@example.com"><i class="fas fa-envelope"></i></a> -->
             </div>
         </div>
     </div>
+
+    <script>
+        // Simple animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation class to elements
+            const header = document.querySelector('.header');
+            const videoSection = document.querySelector('.video-section');
+            const followSection = document.querySelector('.follow-section');
+            
+            setTimeout(() => {
+                header.style.animation = 'fadeIn 0.6s ease-out forwards';
+            }, 100);
+            
+            setTimeout(() => {
+                videoSection.style.animation = 'fadeIn 0.6s ease-out forwards';
+            }, 300);
+            
+            setTimeout(() => {
+                followSection.style.animation = 'fadeIn 0.6s ease-out forwards';
+            }, 500);
+            
+            // Add floating effect to header on scroll
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                header.style.transform = `translateY(${scrollPosition * 0.2}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
